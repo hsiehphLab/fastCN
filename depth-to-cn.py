@@ -215,6 +215,10 @@ l = l.rstrip()
 l = l.split()
 m = float(l[1])
 print(m)
+# added DG 2025.09.05
+if ( m == 0.0):
+    m = 0.001
+# end of change    
 cnFile = fn + '.CN.bed'
 inFile = open(fn,'r')
 outFile = open(cnFile,'w')
