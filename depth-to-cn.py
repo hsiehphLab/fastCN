@@ -215,6 +215,10 @@ l = l.rstrip()
 l = l.split()
 m = float(l[1])
 print(m)
+# added DG 2025.09.05
+if ( m == 0.0):
+    m = 0.001
+# end of change    
 cnFile = fn + '.CN.bed'
 inFile = open(fn,'r')
 outFile = open(cnFile,'w')
@@ -222,14 +226,7 @@ for line in inFile:
     line = line.rstrip()
     line = line.split()
     d = float(line[3])
-    # added DG 2025.09.19
-    # was just c = 2.0*(d/m) which
-    # sometimes gave a division by zero error
-    if ( m == 0.0 and d == 0.0 ):
-        c = 0.0
-    else:
-        c = 2.0*(d/m)
-    # end changed
+    c = 2.0*(d/m)
     line[3] = str(c)
     nl = '\t'.join(line) + '\n'
     outFile.write(nl)
